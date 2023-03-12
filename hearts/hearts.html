@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>hearts</title>
+
+        <style>
+            * {
+                transition: all 0.5s;
+            }
+            #vars {
+                display: block;
+                white-space: pre;
+                position: absolute;
+                z-index: 2;
+            }
+
+            #heart1,
+            #heart1:after,
+            #heart1:before {
+                background-color: var(--heart1-color);
+            }
+
+            #heart2,
+            #heart2:after,
+            #heart2:before {
+                background-color: var(--heart2-color);
+            }
+            #heart3,
+            #heart3:after,
+            #heart3:before {
+                background-color: var(--heart3-color);
+            }
+            #heart4,
+            #heart4:after,
+            #heart4:before {
+                background-color: var(--heart4-color);
+            }
+            #heart5,
+            #heart5:after,
+            #heart5:before {
+                background-color: var(--heart5-color);
+            }
+            #heart6,
+            #heart6:after,
+            #heart6:before {
+                background-color: var(--heart6-color);
+            }
+
+            .heart {
+                position: relative;
+                width:  60px;
+                height:  60px;
+                transform: rotate(45deg);
+                border-radius: 10%;
+
+            }
+            .heart:after,
+            .heart:before {
+                position: absolute;
+                width:  60px;
+                height: 60px;
+                content: '';
+                border-radius: 100%;
+            }
+            .heart:before {
+                bottom: 0;
+                left: -30px;
+            }
+            .heart:after {
+                top: -30px;
+                right: 0;
+            }
+
+            .drawer {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            @keyframes sobbalzo {
+                0%,
+                100% {
+                    transform: translateY(none);
+                }
+                50% {
+                    transform: translateY(-15px);
+                }
+
+            }
+            .mh {
+                animation: sobbalzo 3s infinite;
+            }
+
+            .mh:nth-child(2) {
+                animation-delay: 1.5s;
+            }
+            .mh:nth-child(3) {
+                animation-delay: 3s;
+            }
+            .mh:nth-child(4) {
+                animation-delay: 4.5s;
+            }
+            .mh:nth-child(5) {
+                animation-delay: 6s;
+            }
+            .mh:nth-child(6) {
+                animation-delay: 7.5s;
+            }
+            #hidebtn{
+            visibility: hidden;
+            display: none;
+            }
+            label{
+                position: absolute;
+                z-index: 2;
+                text-decoration: underline;
+                color: #00ccff;
+            }
+            #s2{
+                visibility: hidden;
+                display: none; 
+            }
+            #hidebtn:checked ~ #vars, #hidebtn:checked ~ label #s1 {
+                display: none; 
+                visibility: hidden;
+            }
+            #hidebtn:checked ~ label #s2 {
+                display: inline; 
+                visibility: visible;
+            }
+            @media screen and (prefers-color-scheme:dark) {
+                body {
+                    background-color: var(--background-night-mode-color);
+                    color: #fffbf1;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <input type="checkbox" name="hide" id="hidebtn" checked>
+        <label for="hidebtn"> <span id="s1"> hide</span> <span id="s2">show</span> settings</label>
+        <br>
+        <style id="vars" contenteditable="true">
+            /* theese are editable! Just write the colors you want :) */
+            :root {
+                --heart1-color: #ff0000;
+                --heart2-color: #000fff;
+                --heart3-color: #ffff00;
+                --heart4-color: #008000;
+                --heart5-color: #800080;
+                --heart6-color: #ffa500;
+                --background-night-mode-color: #2b2c2d;
+            }
+        </style>
+
+        <div class="drawer">
+            <div class="mh">
+                <div class="heart" id="heart1"></div>
+            </div>
+            <div class="mh">
+                <div class="heart" id="heart2"></div>
+            </div>
+            <div class="mh">
+                <div class="heart" id="heart3"></div>
+            </div>
+            <div class="mh">
+                <div class="heart" id="heart4"></div>
+            </div>
+            <div class="mh">
+                <div class="heart" id="heart5"></div>
+            </div>
+            <div class="mh">
+                <div class="heart" id="heart6"></div>
+            </div>
+
+        </div>
+    </body>
+</html>
